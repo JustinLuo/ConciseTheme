@@ -1,6 +1,4 @@
-
 <?php $myRequest = $_POST['myRequest']; if ($myRequest != "ajax"){get_header();} ?>
-<?php var_dump($myRequest);?>
 
 <!-- <div class="content"> -->
 <article class="mod-post mod-post__type-page">

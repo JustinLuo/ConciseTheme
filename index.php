@@ -1,7 +1,4 @@
-<?php //get_header(); ?>
 <?php $myRequest = $_POST['myRequest']; if ($myRequest != "ajax"){get_header();} ?>
-<?php var_dump($_POST);?>
-哪里
 <div id="content">
 	<article class="mod-archive">
 		<div class="mod-archive__item"><div class="mod-archive__year"><?php single_cat_title(); ?></div>

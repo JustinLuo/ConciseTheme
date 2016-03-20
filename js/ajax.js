@@ -14,7 +14,7 @@ function Ajaxopt(){
     // $('a[target!=_blank]').on('click', 'a', function(event){
         var link = event.currentTarget;
         var url = link.href;
-        
+
         if ( event.which > 1 || event.metaKey || event.ctrlKey )
         return
         if ( location.protocol !== link.protocol || location.host !== link.host ){
