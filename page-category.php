@@ -3,16 +3,16 @@
 Template Name: 年份归档
 */
 ?>
-<?php get_header(); ?>
-<?php 
+<?php $myRequest = $_POST['myRequest']; if ($myRequest != "ajax"){get_header();} ?>
+<?php
 $args = array(
 	'posts_per_page'      => -1,
 	'post_type'           => 'post',
 	'post_status'         => 'publish',
-	'ignore_sticky_posts' => 1, 
+	'ignore_sticky_posts' => 1,
 );
 $yearpost = new WP_Query( $args );
-$i = 1; 
+$i = 1;
 ?>
 <article class="mod-archive">
 	<div class="mod-archive__item">
@@ -30,7 +30,7 @@ $i = 1;
 		<?php } ?>
 			<li><time class="mod-archive__time" datetime="<?php the_time('Y-m-d h:i:s'); ?>"><?php the_time('Y-m-d'); ?></time> <span>—</span> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
 	<?php $i++; $ul = 0; $date  =  date( 'Y', strtotime($post->post_date) ); endwhile;  ?>
-<?php endif; wp_reset_query(); ?> 
+<?php endif; wp_reset_query(); ?>
 	</div>
 </article>
-<?php get_footer(); ?>
+<?php if ($myRequest != "ajax"){get_footer();} ?>

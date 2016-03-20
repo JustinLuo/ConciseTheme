@@ -14,7 +14,7 @@ register_nav_menus(
        'main' => __( '主菜单导航' )
       )
    );
-   
+
 //禁止代码标点转换
 remove_filter('the_content', 'wptexturize');
 
@@ -23,10 +23,10 @@ remove_filter('the_content', 'wptexturize');
      $buttons[] = 'hr';
      $buttons[] = 'del';
      $buttons[] = 'sub';
-     $buttons[] = 'sup'; 
+     $buttons[] = 'sup';
      $buttons[] = 'fontselect';
      $buttons[] = 'fontsizeselect';
-     $buttons[] = 'cleanup';   
+     $buttons[] = 'cleanup';
      $buttons[] = 'styleselect';
      $buttons[] = 'wp_page';
      $buttons[] = 'anchor';
@@ -49,13 +49,13 @@ function imagesalt($content) {
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 //文章字数统计
-function count_words ($text) {  
-global $post;  
-if ( '' == $text ) {  
-   $text = $post->post_content;  
-   if (mb_strlen($output, 'UTF-8') < mb_strlen($text, 'UTF-8')) $output .= '共写了' . mb_strlen(preg_replace('/\s/','',html_entity_decode(strip_tags($post->post_content))),'UTF-8') . '个字';  
-   return $output;  
-}  
+function count_words ($text) {
+global $post;
+if ( '' == $text ) {
+   $text = $post->post_content;
+   if (mb_strlen($output, 'UTF-8') < mb_strlen($text, 'UTF-8')) $output .= '共写了' . mb_strlen(preg_replace('/\s/','',html_entity_decode(strip_tags($post->post_content))),'UTF-8') . '个字';
+   return $output;
+}
 }
 
 //头像问题
@@ -65,7 +65,7 @@ function replace_avatar_url($avatar) {
 }
 add_filter( 'get_avatar', 'replace_avatar_url', 10, 3 );
 
-// don't show tool bar for default 
+// don't show tool bar for default
 add_action("user_register", "set_user_admin_bar_false_by_default", 10, 1);
 function set_user_admin_bar_false_by_default($user_id) {
     update_user_meta( $user_id, 'show_admin_bar_front', 'false' );

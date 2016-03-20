@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php $myRequest = $_POST['myRequest']; if ($myRequest != "ajax"){get_header();} ?>
 <article class="mod-archive">
 	<div class="mod-archive__item"><div class="mod-archive__year"><?php single_cat_title(); ?></div>
 		<ul class="mod-archive__list">
@@ -15,4 +15,4 @@
 		</div>
 	</div>
 </article>
-<?php get_footer(); ?>
+<?php if ($myRequest != "ajax"){get_footer();} ?>

@@ -3,9 +3,9 @@
 Template Name: TAG页面
 */
 ?>
-<?php get_header(); ?>
+<?php $myRequest = $_POST['myRequest']; if ($myRequest != "ajax"){get_header();} ?>
 <article class="mod-archive">
-<?php 
+<?php
 $tags = get_tags();
 foreach ($tags as $key => $value) {
 //echo $value->term_taxonomy_id;
@@ -14,11 +14,11 @@ $args = array(
 'post_type'           => 'post',
     'post_status'         => 'publish',
     'ignore_sticky_posts' => 1,
-    'tag_id'              => $value->term_taxonomy_id, 
+    'tag_id'              => $value->term_taxonomy_id,
 );
 $tagpost = new WP_Query( $args );
 ?>
-	<div class="mod-archive__item"><div class="mod-archive__year"><?php echo $value->name; ?></div>	
+	<div class="mod-archive__item"><div class="mod-archive__year"><?php echo $value->name; ?></div>
 		<ul class="mod-archive__list">
 		<?php if($tagpost->have_posts()) : ?>
 		<?php while($tagpost->have_posts()) : $tagpost->the_post() ?>
@@ -31,4 +31,4 @@ $tagpost = new WP_Query( $args );
 }
 ?>
 </article>
-<?php get_footer(); ?>
+<?php if ($myRequest != "ajax"){get_footer();} ?>

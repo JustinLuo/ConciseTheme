@@ -11,7 +11,7 @@
 	wp_enqueue_script( 'jquery' );
 	wp_head();
 ?>
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.1/jquery.min.js"></script>
 </head>
 <body>
 <header class="mod-head">
@@ -22,7 +22,7 @@
 		</a>
 	</div>
 	<nav class="mod-head__nav">
-	<?php 
+	<?php
 		$top_nav = wp_nav_menu( array( 'theme_location'=>'main', 'fallback_cb'=>'', 'container'=>'', 'menu_class'=>'mod-head__ul', 'echo'=>false, 'after'=>'<span>·</span>' ) );
 		$top_nav = str_replace( "<span>·</span></li>\n</ul>", "</li>\n</ul>", $top_nav );
 		echo $top_nav;
@@ -30,7 +30,7 @@
 	</nav>
 	<a id="right-panel-link" href="#right-panel"></a>
 	<div id="right-panel" class="panel">
-		<?php 
+		<?php
 			$top_nav = wp_nav_menu( array( 'theme_location'=>'main', 'fallback_cb'=>'', 'container'=>'', 'menu_class'=>'ymod-head', 'echo'=>false, 'after'=>'' ) );
 			$top_nav = str_replace( "</li>\n</ul>", "</li>\n</ul>", $top_nav );
 			echo $top_nav;
@@ -39,4 +39,18 @@
 	</div>
 	<script src="<?php bloginfo( 'template_url' ); ?>/js/slider.js"></script>
 	<script>$('#right-panel-link').panelslider({side: 'right', duration: 200 });$('#close-panel-bt').click(function() {$.panelslider.close();});</script>
+
+<!--  Ajax-->
+	<!-- <script>
+	$('a[target!=_blank]').live('click', function(){
+		var url = $(this).attr("href");
+		var title = $(this).attr("title");
+		$('#contents').fadeTo(500, 0.3);
+		#('#contents').load("url #contents", function(){
+			$('#contents').fadeTo(200, 1);
+			window.document.title = title;
+		});
+	})
+	</script> -->
+
 </header>

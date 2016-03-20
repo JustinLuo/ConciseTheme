@@ -25,12 +25,22 @@ global $wp_widget_factory;
 remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ,'recent_comments_style'));
 }
 //禁止加载WP自带的jquery.js
-if ( !is_admin() ) { // 后台不禁止
-function my_init_method() {
-wp_deregister_script( 'jquery' ); // 取消原有的 jquery 定义
+// if ( !is_admin() ) { // 后台不禁止
+// function my_init_method() {
+// wp_deregister_script( 'jquery' ); // 取消原有的 jquery 定义
+// }
+// add_action('init', 'my_init_method');
+// }
+
+// 禁止加载wp自带的jquery.js
+function my_scripts_method() {
+    wp_deregister_script( 'jquery' );
+    // wp_register_script( 'jquery', 'http://libs.baidu.com/jquery/1.8.1/jquery.min.js');
+    // wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'myAjaxScript', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ), '1.0', true );
 }
-add_action('init', 'my_init_method'); 
-}
+add_action('init', 'my_scripts_method');
+
 wp_deregister_script( 'l10n' );
 //删除仪表盘模块
 function example_remove_dashboard_widgets() {
